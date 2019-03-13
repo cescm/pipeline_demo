@@ -1,4 +1,4 @@
-def var_global;
+var var_global;
 
 node(){
     stage('1'){
