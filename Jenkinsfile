@@ -1,7 +1,7 @@
 def var_global;
-
+def workspace;
 node(){
-    stage('1'){
+    stage('Checkout Code'){
         var_global="GLOBAL";
         def var_local = "LOCAL";
         echo ("Nos traemos el fichero de git");
@@ -9,6 +9,22 @@ node(){
         returnMessage_noparam(); //llamamos a la función sin parámetros.
         echo returnMessage_param("parametro_para_llamada");//llamamos a la función con parámetros.
     }
+    stage('Code Analysis'){
+        build job: 'Code_Analysis', parameters: [text(name: 'workspace', value: '')];
+    }
+    stage('Code Compile'){
+        build job: 'Code_Compile', parameters: [text(name: 'workspace', value: '')];
+    }
+    stage('Code Unit Test'){
+        build job: 'Code_Unit_Test', parameters: [text(name: 'workspace', value: '')];
+    }
+    stage('Code Package'){
+        build job: 'Code_Packaging', parameters: [text(name: 'workspace', value: '')];
+    }
+    stage('Deploy'){
+        build job: 'Code_Deploy', parameters: [text(name: 'workspace', value: '')];
+    }
+    
 }
 
 def returnMessage_noparam(){
