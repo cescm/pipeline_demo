@@ -1,4 +1,5 @@
 def var_global;
+echo ("Nos traemos el fichero de git");
 node(){
     stage('1'){
         var_global="GLOBAL";
