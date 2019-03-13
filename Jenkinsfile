@@ -22,7 +22,7 @@ node(){
         build job: 'Code_Packaging', parameters: [text(name: 'workspace', value: '')];
     }
     stage('Deploy'){
-        build job: 'Code_Deploy', parameters: [text(name: 'workspace', value: '')];
+        build job: 'Code_Deploy';
     }
     
 }
